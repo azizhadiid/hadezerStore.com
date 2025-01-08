@@ -1,0 +1,26 @@
+// Membuat component dengan menggunakn class
+class Button extends React.Component {
+  render() {
+    return (
+      <button className="h-10 px-6 font-semibold rounded-md bg-slate-700 text-white" type="submit">
+        Buy now
+      </button>
+    )
+  }
+}
+// Membuat Component Menggunakan Function
+function ButtonBlack() {
+  return (
+    <button className="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit">
+      Buy now
+    </button>
+  )
+}
+// Membuat Button component dengan arrow function
+const ButtonRed = () => {
+  return (
+    <button className="h-10 px-6 font-semibold rounded-md bg-red-700 text-white" type="submit">
+      Buy now
+    </button>
+  )
+}
