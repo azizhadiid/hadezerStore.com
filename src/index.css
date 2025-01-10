@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face{
+    font-family: "Jersey";
+    src: local("Jersey15-Regular"),
+    url('./assets/fonts/Jersey15-Regular.ttf') format("truetype");
+
+}
+
+@font-face{
+    font-family: "Poppins";
+    src: local("Poppins-Regular"),
+    url('./assets/fonts/Poppins-Regular.ttf') format("truetype");
+
+}
+

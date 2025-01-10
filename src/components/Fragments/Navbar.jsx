@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 text-white">
-      <div className="container mx-auto flex justify-between items-center px-4 py-3">
+      <div className="container mx-auto flex justify-between items-center px-5 py-3">
         {/* Logo */}
         <div className="flex items-center space-x-3">
           {/* Ganti SVG dengan Image */}
@@ -20,27 +20,27 @@ const Navbar = () => {
             alt="Logo"
             className="h-8 w-8 object-contain"
           />
-          <span className="text-2xl font-bold">Brand</span>
+          <span className="text-2xl  font-jersey">HadezerStore</span>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
-          <Link to="/" className="hover:text-gray-300 font-semibold text-xl">
+          <Link to="/" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Home
           </Link>
-          <Link to="/product" className="hover:text-gray-300 font-semibold text-xl">
+          <Link to="/product" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Product
           </Link>
-          <Link to="/services" className="hover:text-gray-300 font-semibold text-xl">
+          <Link to="/services" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Services
           </Link>
-          <Link to="/contact" className="hover:text-gray-300 font-semibold text-xl">
+          <Link to="/contact" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Contact
           </Link>
         </div>
 
         {/* Login Button */}
-        <Link to='/login' className="hidden md:inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md cursor-pointer font-medium text-xl">
+        <Link to='/login' className="hidden md:inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md cursor-pointer font-poppins font-semibold text-xl">
           Log In
         </Link>
 
