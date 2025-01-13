@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar></Navbar>
-      <Footer></Footer>
+      <Footer klass="mt-2 bg-gray-800"></Footer>
     </>
   );
 };
