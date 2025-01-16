@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import logoHadezer from "./img/icons8-buying-64.png"
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { id } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -10,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-gray-800 text-white fixed top-0 left-0 w-full z-50 shadow-xl">
       <div className="container mx-auto flex justify-between items-center px-5 py-3">
         {/* Logo */}
         <div className="flex items-center space-x-3">
@@ -30,9 +31,6 @@ const Navbar = () => {
           </Link>
           <Link to="/product" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Product
-          </Link>
-          <Link to="/services" className="hover:text-gray-300 font-poppins font-semibold text-xl">
-            Services
           </Link>
           <Link to="/contact" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Contact
@@ -76,9 +74,6 @@ const Navbar = () => {
         </Link>
         <Link to="/about" className="block hover:text-gray-300">
           About
-        </Link>
-        <Link to="/services" className="block hover:text-gray-300">
-          Services
         </Link>
         <Link to="/contact" className="block hover:text-gray-300">
           Contact
