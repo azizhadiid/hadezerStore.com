@@ -57,38 +57,40 @@ const HomePage = () => {
   ];
 
   return (
-    <>
+    <div className="bg-gray-800">
       <Navbar id="service"></Navbar>
       {/* Section 1 */}
-      <section className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-6 py-10 mt-16">
-        <div className="text-center lg:text-left lg:w-1/2 mt-8 lg:mt-0">
-          <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-4 font-poppins">
-            SPECIAL SALE.
-          </h1>
-          <h3 className="text-2xl lg:text-3xl font-semibold text-gray-600 mb-4 font-poppins">
-            HadezerStore
-          </h3>
-          <p className="text-gray-500 leading-relaxed mb-6 font-poppins">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam eveniet molestias atque in quasi magnam illo ducimus tempore. Ut obcaecati ab ipsam necessitatibus doloribus. Omnis hic debitis atque incidunt sint.
-          </p>
-          <Link
-            to="#"
-            className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300 font-poppins font-semibold"
-          >
-            Lihat Lebih
-          </Link>
+      <section className="bg-white">
+        <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-6 py-10 mt-16">
+          <div className="text-center lg:text-left lg:w-1/2 mt-8 lg:mt-0">
+            <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-4 font-poppins">
+              SPECIAL SALE.
+            </h1>
+            <h3 className="text-2xl lg:text-3xl font-semibold text-gray-600 mb-4 font-poppins">
+              HadezerStore
+            </h3>
+            <p className="text-gray-500 leading-relaxed mb-6 font-poppins">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam eveniet molestias atque in quasi magnam illo ducimus tempore. Ut obcaecati ab ipsam necessitatibus doloribus. Omnis hic debitis atque incidunt sint.
+            </p>
+            <Link
+              to="#"
+              className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300 font-poppins font-semibold"
+            >
+              Lihat Lebih
+            </Link>
+          </div>
+          <div className="flex justify-center">
+            <img
+              src={ilustrasi1}
+              alt="Ilustrasi 1"
+              className="w-3/4 lg:w-full max-w-lg"
+            />
+          </div>
         </div>
-        <div className="flex justify-center">
-          <img
-            src={ilustrasi1}
-            alt="Ilustrasi 1"
-            className="w-3/4 lg:w-full max-w-lg"
-          />
-        </div>
-      </section>
+      </section >
 
       {/* Section 2 */}
-      <section className="bg-gray-100 py-10">
+      <section section className="bg-gray-100 py-10" >
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-6">
           {/* Div untuk Gambar */}
           <div className="flex justify-center mb-6 lg:mb-0">
@@ -112,7 +114,7 @@ const HomePage = () => {
         </div>
       </section>
       {/* Section 3 */}
-      <section className="bg-gray-50 py-10">
+      <section section className="bg-gray-50 py-10" >
         <h1 className="text-center text-3xl font-bold text-gray-800 mb-8">Product</h1>
         <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
           {/* Card 1: Baju */}
@@ -140,7 +142,7 @@ const HomePage = () => {
       </section>
 
       {/* Section 4 */}
-      <section className="bg-gray-100 py-10">
+      <section section className="bg-gray-100 py-10" >
         <h1 className="text-center text-3xl font-bold text-gray-800 mb-8">Testimonials</h1>
         <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 max-w-7xl">
           {testimonials.map((testimonial, index) => (
@@ -149,7 +151,7 @@ const HomePage = () => {
         </div>
       </section>
       <Footer klass="mt-2 bg-gray-800"></Footer>
-    </>
+    </div >
   );
 };
 
