@@ -18,6 +18,11 @@ const ProductPage = () => {
     });
   }, []);
 
+  const [totalCart, setTotalCart] = useState(0);
+  const handleTotalCart = () => {
+    setTotalCart((prevTotal) => prevTotal + 1); // Tambah 1 setiap kali dipanggil
+  };
+
   return (
     <div className="bg-gray-800">
       <NavbarUser></NavbarUser>
@@ -46,7 +51,7 @@ const ProductPage = () => {
 
               {/* Badge jumlah item */}
               <span className="absolute bg-blue-500 text-blue-100 px-2 py-1 text-xs font-bold rounded-full -top-2 -right-2">
-                9
+                {totalCart}
               </span>
             </button>
 
@@ -59,7 +64,7 @@ const ProductPage = () => {
         <div className="container mx-auto px-5 py-3 ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 md:ml-1 xl:ml-10 lg:ml-16">
             {products.length > 0 && products.map((product) => (
-              <CardProduct key={product.id} title={product.title} image={product.image} price={product.price} rating={product.rating.rate} category={product.category} description={product.description}>
+              <CardProduct key={product.id} title={product.title} image={product.image} price={product.price} rating={product.rating.rate} category={product.category} description={product.description} onAddToCart={handleTotalCart}>
               </CardProduct>
             ))}
           </div>

@@ -1,5 +1,5 @@
 const CardProduct = (props) => {
-    const { description, title, image, price, rating, category } = props;
+    const { description, title, image, price, rating, category, onAddToCart } = props;
     return (
         <div className="relative m-4 w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
             {/* Gambar */}
@@ -56,7 +56,8 @@ const CardProduct = (props) => {
                 </div>
 
                 {/* Tombol */}
-                <a
+                <button
+                    onClick={onAddToCart}
                     href="id"
                     className="flex items-center justify-center w-full rounded-md bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300"
                 >
@@ -75,7 +76,7 @@ const CardProduct = (props) => {
                         />
                     </svg>
                     Add to cart
-                </a>
+                </button>
             </div>
         </div>
     );
