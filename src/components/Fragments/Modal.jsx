@@ -1,4 +1,36 @@
-const Modal = ({ isOpen, onClose }) => {
+import { useEffect, useState } from "react";
+
+const Modal = ({ isOpen, onClose, onCartUpdate }) => {
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => {
+        // Ambil data dari localStorage
+        const storedCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+        setCartItems(storedCart);
+    }, [isOpen]); // Refresh setiap kali modal dibuka
+
+    useEffect(() => {
+        if (cartItems.length > 0) {
+            const sum = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
+            setTotalPrice(sum);
+        } else {
+            setTotalPrice(0); // Jika keranjang kosong, totalPrice adalah 0
+        }
+    }, [cartItems]);
+
+    const handleRemoveItem = (id) => {
+        const updatedCart = cartItems.filter((item) => item.id !== id); // Hapus item berdasarkan ID
+        setCartItems(updatedCart); // Perbarui state
+        localStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Perbarui localStorage
+        onCartUpdate(updatedCart); // Panggil callback untuk memperbarui `cart` di ProductPage
+
+        // Panggil callback untuk memperbarui cart di parent
+        if (onCartUpdate) {
+            onCartUpdate(updatedCart);
+        }
+    };
+
     if (!isOpen) return null;
 
     return (
@@ -7,17 +39,17 @@ const Modal = ({ isOpen, onClose }) => {
             onClick={onClose}
         >
             <div
-                className="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md"
+                className="relative top-20 mx-auto shadow-xl rounded-md bg-white max-w-lg w-full"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="flex justify-end p-2">
+                <div className="flex justify-between items-center p-4 border-b">
+                    <h3 className="text-lg font-semibold text-gray-700">Cart Items</h3>
                     <button
                         onClick={onClose}
-                        type="button"
-                        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                        className="text-gray-400 hover:text-gray-900"
                     >
                         <svg
-                            className="w-5 h-5"
+                            className="w-6 h-6"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -31,35 +63,64 @@ const Modal = ({ isOpen, onClose }) => {
                     </button>
                 </div>
 
-                <div className="p-6 pt-0 text-center">
-                    <svg
-                        className="w-20 h-20 text-red-600 mx-auto"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        ></path>
-                    </svg>
-                    <h3 className="text-xl font-normal text-gray-500 mt-5 mb-6">
-                        Are you sure you want to delete this user?
-                    </h3>
+                <div className="p-4">
+                    {cartItems.length > 0 ? (
+                        <ul>
+                            {cartItems.map((item, index) => (
+                                <li
+                                    key={index}
+                                    className="flex items-center justify-between py-2 border-b"
+                                >
+                                    <div className="flex items-center">
+                                        <img
+                                            src={item.image}
+                                            alt={item.title}
+                                            className="w-12 h-12 object-cover rounded mr-4"
+                                        />
+                                        <div>
+                                            <h4 className="font-medium text-gray-800">{item.title.substring(0, 25)}</h4>
+                                            <p className="text-sm text-gray-500">
+                                                {item.price.toLocaleString("id-ID", {
+                                                    style: "currency",
+                                                    currency: "USD",
+                                                })}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <span className="text-gray-600 text-sm mr-4">Qty: {item.qty}</span>
+                                        <button
+                                            onClick={() => handleRemoveItem(item.id)} // Panggil fungsi untuk menghapus item
+                                            className="bg-red-500 hover:bg-red-600 text-white text-xs px-2 py-1 rounded-md font-bold font-poppins"
+                                        >
+                                            Remove
+                                        </button>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                    ) : (
+                        <p className="text-center text-gray-500">Your cart is empty.</p>
+                    )}
+                </div>
+
+                <div className="flex justify-between items-center p-4 border-t">
+                    <h4 className="text-lg font-semibold text-gray-700">Total Price:</h4>
+                    <p className="text-lg font-bold text-gray-800">
+                        {totalPrice.toLocaleString("id-ID", {
+                            style: "currency",
+                            currency: "USD",
+                        })}
+                    </p>
+                </div>
+
+                <div className="flex justify-end p-4 border-t">
                     <button
                         onClick={onClose}
-                        className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2"
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md"
                     >
-                        Yes, I'm sure
-                    </button>
-                    <button
-                        onClick={onClose}
-                        className="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
-                    >
-                        No, cancel
+                        Close
                     </button>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 const CardProduct = (props) => {
-    const { description, title, image, price, rating, category, onAddToCart } = props;
+    const { description, title, image, price, rating, category, onAddToCart, id } = props;
     return (
         <div className="relative m-4 w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
             {/* Gambar */}
@@ -57,7 +57,7 @@ const CardProduct = (props) => {
 
                 {/* Tombol */}
                 <button
-                    onClick={onAddToCart}
+                    onClick={() => onAddToCart(id)}
                     href="id"
                     className="flex items-center justify-center w-full rounded-md bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300"
                 >

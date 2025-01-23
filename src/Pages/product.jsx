@@ -18,10 +18,37 @@ const ProductPage = () => {
     });
   }, []);
 
-  const [totalCart, setTotalCart] = useState(0);
-  const handleTotalCart = () => {
-    setTotalCart((prevTotal) => prevTotal + 1); // Tambah 1 setiap kali dipanggil
+  const [cart, setCart] = useState([]);
+  // UseEffect utk simpan ke localStroge
+  useEffect(() => {
+    setCart([]);
+  }, []);
+
+  // Sync cart with localStorage on page load
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCart(storedCart);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+  }, [cart]);
+
+  const handleAddToCart = (product) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === product.id);
+      if (existingItem) {
+        // Jika produk sudah ada, tambahkan qty
+        return prevCart.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        );
+      } else {
+        // Jika produk belum ada, tambahkan produk baru
+        return [...prevCart, { ...product, qty: 1 }];
+      }
+    });
   };
+
 
   return (
     <div className="bg-gray-800">
@@ -51,20 +78,26 @@ const ProductPage = () => {
 
               {/* Badge jumlah item */}
               <span className="absolute bg-blue-500 text-blue-100 px-2 py-1 text-xs font-bold rounded-full -top-2 -right-2">
-                {totalCart}
+                {cart.length}
               </span>
             </button>
 
             {/* Modal */}
-            <Modal isOpen={isModalOpen} onClose={closeModal} />
+            <Modal isOpen={isModalOpen} onClose={closeModal} onCartUpdate={(updatedCart) => setCart(updatedCart)} />
           </div>
           <hr className="border-gray-300 mb-4" />
         </div>
-
         <div className="container mx-auto px-5 py-3 ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 md:ml-1 xl:ml-10 lg:ml-16">
             {products.length > 0 && products.map((product) => (
-              <CardProduct key={product.id} title={product.title} image={product.image} price={product.price} rating={product.rating.rate} category={product.category} description={product.description} onAddToCart={handleTotalCart}>
+              <CardProduct key={product.id} title={product.title} image={product.image} price={product.price} rating={product.rating.rate} category={product.category} description={product.description} onAddToCart={() =>
+                handleAddToCart({
+                  id: product.id,
+                  title: product.title,
+                  price: product.price,
+                  image: product.image,
+                })
+              } id={product.id}>
               </CardProduct>
             ))}
           </div>
