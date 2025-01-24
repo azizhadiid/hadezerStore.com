@@ -35,6 +35,9 @@ const Navbar = (props) => {
           <Link to="/contact" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Contact
           </Link>
+          <Link to="/account" className="hover:text-gray-300 font-poppins font-semibold text-xl">
+            Account
+          </Link>
         </div>
 
         {/* Login Button */}
@@ -69,16 +72,19 @@ const Navbar = (props) => {
         className={`${isOpen ? "block" : "hidden"
           } md:hidden bg-gray-700 px-4 pt-2 pb-4 space-y-2`}
       >
-        <Link to="/" className="block hover:text-gray-300">
+        <Link to="/" className="block hover:text-gray-300 font-poppins">
           Home
         </Link>
-        <Link to="/about" className="block hover:text-gray-300">
+        <Link to="/about" className="block hover:text-gray-300 font-poppins">
           About
         </Link>
-        <Link to="/contact" className="block hover:text-gray-300">
+        <Link to="/contact" className="block hover:text-gray-300 font-poppins">
           Contact
         </Link>
-        <Link to="/login" className="block w-full bg-blue-600 hover:bg-blue-700 text-center px-4 py-2 rounded-md cursor-pointer">
+        <Link to="/account" className="block hover:text-gray-300 font-poppins">
+          Account
+        </Link>
+        <Link to="/login" className="block w-full bg-blue-600 hover:bg-blue-700 text-center px-4 py-2 rounded-md cursor-pointer font-poppins">
           Log In
         </Link>
       </div>

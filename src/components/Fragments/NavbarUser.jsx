@@ -35,12 +35,15 @@ const NavbarUser = (props) => {
           <Link to="/contact" className="hover:text-gray-300 font-poppins font-semibold text-xl">
             Contact
           </Link>
+          <Link to="/account" className="hover:text-gray-300 font-poppins font-semibold text-xl">
+            Account
+          </Link>
         </div>
 
         {/* Login Button */}
-        <Link to='/account' className="hidden md:inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md cursor-pointer font-poppins font-semibold text-xl">
-          Account
-        </Link>
+        <button className="hidden md:inline-block bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md cursor-pointer font-poppins font-semibold text-xl">
+          Logout
+        </button>
 
         {/* Hamburger Menu */}
         <button
@@ -69,18 +72,21 @@ const NavbarUser = (props) => {
         className={`${isOpen ? "block" : "hidden"
           } md:hidden bg-gray-700 px-4 pt-2 pb-4 space-y-2`}
       >
-        <Link to="/" className="block hover:text-gray-300">
+        <Link to="/" className="block hover:text-gray-300 font-poppins">
           Home
         </Link>
-        <Link to="/about" className="block hover:text-gray-300">
+        <Link to="/about" className="block hover:text-gray-300 font-poppins">
           About
         </Link>
-        <Link to="/contact" className="block hover:text-gray-300">
+        <Link to="/contact" className="block hover:text-gray-300 font-poppins">
           Contact
         </Link>
-        <Link to="/account" className="block w-full bg-blue-600 hover:bg-blue-700 text-center px-4 py-2 rounded-md cursor-pointer">
+        <Link to="/account" className="block hover:text-gray-300 font-poppins">
           Account
         </Link>
+        <button className="block w-full bg-red-600 hover:bg-red-700 text-center px-4 py-2 rounded-md cursor-pointer font-poppins">
+          Logout
+        </button>
       </div>
     </nav>
   );

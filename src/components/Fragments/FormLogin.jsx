@@ -13,7 +13,7 @@ const FormLogin = (props) => {
     return (
         <form action={action} onSubmit={handleLogin}>
             {/* Email */}
-            <InputForm title="Email" type="text" placeholder="Jhond Doe" name="username" id="username" />
+            <InputForm title="Username" type="text" placeholder="Jhond Doe" name="username" id="username" />
             {/* Password */}
             <InputForm title="Password" type="password" placeholder="********" name="password" />
             <Button klass="bg-blue-600 w-full" type="submit" >Login</Button>
