@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../services/product.service";
 import CardProduct from "../components/Fragments/CardProduct";
 import Modal from "../components/Fragments/Modal";
+import { useLogin } from "../hooks/useLogin";
 
 const ProductPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // Session Login
+  const username = useLogin();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -16,14 +19,6 @@ const ProductPage = () => {
     getProducts((data) => {
       setProducts(data);
     });
-  }, []);
-
-  // Session Login
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      window.location.href = "/login";
-    }
   }, []);
 
   const [cart, setCart] = useState([]);

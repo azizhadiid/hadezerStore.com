@@ -3,7 +3,7 @@ const CardProduct = (props) => {
     return (
         <div className="relative m-4 w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
             {/* Gambar */}
-            <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+            <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href={`/product/${id}`}>
                 <img
                     className="object-cover w-full"
                     src={image}
@@ -17,7 +17,7 @@ const CardProduct = (props) => {
                 <p className="mb-1 text-sm text-gray-500 uppercase">Category: {category}</p>
 
                 {/* Judul */}
-                <a href="#">
+                <a href={`/product/${id}`}>
                     <h5 className="text-lg font-semibold text-gray-800">
                         {title.substring(0, 20)}...
                     </h5>
