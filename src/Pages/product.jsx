@@ -18,6 +18,14 @@ const ProductPage = () => {
     });
   }, []);
 
+  // Session Login
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/login";
+    }
+  }, []);
+
   const [cart, setCart] = useState([]);
   // UseEffect utk simpan ke localStroge
   useEffect(() => {
