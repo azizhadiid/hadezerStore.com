@@ -75,8 +75,8 @@ const Navbar = (props) => {
         <Link to="/" className="block hover:text-gray-300 font-poppins">
           Home
         </Link>
-        <Link to="/about" className="block hover:text-gray-300 font-poppins">
-          About
+        <Link to="/product" className="block hover:text-gray-300 font-poppins">
+          Product
         </Link>
         <Link to="/contact" className="block hover:text-gray-300 font-poppins">
           Contact

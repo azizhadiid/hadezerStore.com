@@ -9,6 +9,7 @@ import HomePage from './Pages/home.jsx';
 import ProductPage from './Pages/product.jsx';
 import BerandaPage from './Pages/beranda.jsx';
 import DetailPage from './Pages/detailProducts.jsx';
+import Profile from './Pages/account.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/product/:id",
     element: <DetailPage />
+  },
+  {
+    path: "/account",
+    element: <Profile />
   }
 ]);
 

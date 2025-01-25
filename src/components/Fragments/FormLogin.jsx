@@ -1,31 +1,37 @@
 import InputForm from "../Elements/Input/InputForm";
 import Button from "../Elements/Button/button";
 import { useEffect, useRef, useState } from "react";
-import { login } from "../../services/auth.service";
+import { login, getUserId } from "../../services/auth.service";
 
 const FormLogin = (props) => {
     const { action } = props;
     const [loginFailed, setLoginFailed] = useState("");
     const handleLogin = (event) => {
         event.preventDefault();
-        // localStorage.setItem('username', event.target.username.value);
-        // localStorage.setItem('password', event.target.password.value);
-        // window.location.href = "/";
         const data = {
             username: event.target.username.value,
-            password: event.target.password.value
+            password: event.target.password.value,
         };
-        // Mengecek data login di database
+
         login(data, (status, res) => {
             if (status) {
                 localStorage.setItem("token", res);
+
+                // Decode token untuk mendapatkan ID user
+                const userId = getUserId(res);
+                localStorage.setItem("userId", userId);
+
+                // Redirect ke beranda
                 window.location.href = "/beranda";
             } else {
-                setLoginFailed(res.response.data);
-                console.log(res.response.data);
+                // Tangani error dengan aman
+                const errorMessage = res?.response?.data?.message || "Login failed. Please try again.";
+                setLoginFailed(errorMessage);
+                console.error("Login error:", errorMessage);
             }
         });
-    }
+    };
+
 
     const usernameRef = useRef(null);
 

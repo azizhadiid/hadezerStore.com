@@ -14,6 +14,7 @@ const NavbarUser = (props) => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     localStorage.removeItem('password');
     window.location.href = "/login";
   };

@@ -9,7 +9,8 @@ export const login =(data, callback) => {
     });
 };
 
-export const getUsername = (token) => {
-    const decoded = jwtDecode(token);
-    return decoded.user;
+export const getUserId = (token) => {
+    const decoded = jwtDecode(token); // Decode JWT
+    return decoded.sub; // Asumsikan ID user ada di `sub` payload
 };
+
