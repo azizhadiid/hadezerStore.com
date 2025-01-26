@@ -5,9 +5,11 @@ import ilustrasi1 from "./img/6505894.jpg";
 import ilustrasi2 from "./img/32553172.png";
 import CardService from "../components/Fragments/CardService";
 import TestimonialCard from "../components/Fragments/TestimonialCard";
-import { useEffect, useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 const BerandaPage = () => {
+    // Session Login
+    const username = useLogin();
     const testimonials = [
         {
             image:
@@ -56,14 +58,6 @@ const BerandaPage = () => {
             stars: 4,
         },
     ];
-
-    // Session Login
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (!token) {
-            window.location.href = "/login";
-        }
-    }, []);
 
     return (
         <div className="bg-gray-800">

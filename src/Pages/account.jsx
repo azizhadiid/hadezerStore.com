@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Fragments/Footer";
 import NavbarUser from "../components/Fragments/NavbarUser";
 import axios from "axios";
+import { useLogin } from "../hooks/useLogin";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
+    // Session Login
+    const username = useLogin();
 
     useEffect(() => {
         // Ambil ID user dari localStorage

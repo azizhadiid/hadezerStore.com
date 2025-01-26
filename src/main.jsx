@@ -10,6 +10,7 @@ import ProductPage from './Pages/product.jsx';
 import BerandaPage from './Pages/beranda.jsx';
 import DetailPage from './Pages/detailProducts.jsx';
 import Profile from './Pages/account.jsx';
+import ContactPage from './Pages/contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/account",
     element: <Profile />
+  },
+  {
+    path: "/contact",
+    element: <ContactPage />
   }
 ]);
 
